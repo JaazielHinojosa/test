@@ -31,14 +31,23 @@
                             </div>
                         </div>
                         <div class="m-portlet__body">
-                            {!! Form::open(['id' => 'algorithm', 'class' => 'm-form m-form--fit m-form--label-align-right form-horizontal users-forms', 'role' => 'form', 'route' => 'room.algorithm']) !!}
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {!! Form::open(['id' => 'algorithm', 'class' => 'm-form m-form--fit m-form--label-align-right form-horizontal users-forms', 'role' => 'form', 'route' => 'room.algorithm', 'enctype' => "multipart/form-data"]) !!}
                             <div class="m-portlet__body">
                                 <div class="form-group m-form__group row tool" data-tool="usuarios" data-toolsub="algorithm">
-                                    <div class="col-sm-7">
-                                        <input id="algorithm" type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom" value="Iluminar habitación">
+                                    <div class="form-group m-form__group">
+                                        <label for="exampleInputEmail1">Archivo txt</label>
+                                        <div></div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="txtFile" name="txtFile" accept=".txt" required>
+                                            <label class="custom-file-label" for="customFile">Seleccionar archivo</label>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                        <input id="algorithm" type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom" value="Iluminar habitación">
+                                    </div>
                             </div>
                             {!! Form::close() !!}
                         </div>

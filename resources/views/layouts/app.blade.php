@@ -311,7 +311,7 @@
                  m-menu-scrollable="1" m-menu-dropdown-timeout="500"
                  style="position: relative;">
                 <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
-                    <li class="m-menu__item" aria-haspopup="true" >
+                    {{--<li class="m-menu__item" aria-haspopup="true" >
                         <a  href="{{url('file')}}" class="m-menu__link ">
                             <i class="m-menu__link-icon fa fa-download"></i>
                             <span class="m-menu__link-title">
@@ -322,7 +322,7 @@
                                 </span>
                             </span>
                         </a>
-                    </li>
+                    </li>--}}
                     <li class="m-menu__item" aria-haspopup="true" >
                         <a href="{{url('room')}}" class="m-menu__link ">
                             <i class="m-menu__link-icon fa fa-lightbulb"></i>

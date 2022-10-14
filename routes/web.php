@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.update');
 });
 
 Route::get('file',[RoomController::class, 'create'])->name('room.create');
 Route::post('file/downloadFile', [RoomController::class, 'downloadFile'])->name('room.download');
-Route::get('room', [RoomController::class, 'store'])->name('room.store');
+Route::get('room', [RoomController::class, 'store'])->name('room.store')->name('index');
 Route::post('room/algorithm', [RoomController::class, 'algorithm'])->name('room.algorithm');
 
 

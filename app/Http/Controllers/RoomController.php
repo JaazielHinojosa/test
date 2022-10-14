@@ -14,7 +14,7 @@ class RoomController extends Controller
         return view('users.create');
     }
 
-    public function downloadFile(): \Illuminate\Http\Response
+    /*public function downloadFile(): \Illuminate\Http\Response
     {
         $matrix = RoomsHelper::buildMatrix();
 
@@ -37,14 +37,15 @@ class RoomController extends Controller
         ];
 
         return Response::make($write, 200, $headers);
-    }
+    }*/
 
     public function store() {
         return view('users.update');
     }
 
-    public function algorithm() {
-        $originalmatrix = RoomsHelper::buildMatrix();
+    public function algorithm(Request $request) {
+        $file = $request->file('txtFile');
+        $originalmatrix = RoomsHelper::buildMatrix($file->getContent());
         $roomHelper = new RoomsHelper();
 
         for ($i = 0; $i < 50; $i++) {
@@ -69,15 +70,16 @@ class RoomController extends Controller
     public function getBetterBulb($originalmatrix): array
     {
         $fieldsLightedByBulb = [];
+        $roomHelper = new RoomsHelper();
         //Recorrer toda la matriz para saber si hay una casilla en 0
         foreach ($originalmatrix as $indexCol => $cols) {
             foreach ($cols as $indexRaw => $value) {
+
                 if ($value == 0) {
-                    $roomHelper = new RoomsHelper();
                     $downFields = $roomHelper->down($indexCol, $indexRaw, $originalmatrix, false);
                     $rightFields = $roomHelper->right($indexCol, $indexRaw, $originalmatrix, false);
                     $upFields = $roomHelper->up($indexCol, $indexRaw, $originalmatrix, false);
-                    $leftFields = $roomHelper->left($indexCol, $indexRaw, $originalmatrix, false);
+                    $leftFields = $roomHelper->left($indexCol, $indexRaw, $originalmatrix, false, true);
 
                     $totalFieldsLighted = $roomHelper->getTotalFieldsLighted($downFields, $rightFields, $upFields, $leftFields);
 
